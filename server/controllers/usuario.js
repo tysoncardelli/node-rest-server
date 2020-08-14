@@ -4,14 +4,17 @@ const bcrypt = require('bcrypt');
 const _ =require('underscore');
 const bodyParser =  require('body-parser');
 app.use(bodyParser.json())
-const Usuario = require('../models/usuario')
+const Usuario = require('../models/usuario');
+const {verificaToken} = require('../middlewares/autenticacion');
+const {verifyAdminRol} = require('../middlewares/autenticacion');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
 
-app.get('/usuario', function(req, res) {
+app.get('/usuario', [verificaToken,verifyAdminRol] ,function(req, res) {
 
+   
     let desde = req.query.desde || 0;
     desde = Number(desde);
     let limite = req.query.limite || 5;

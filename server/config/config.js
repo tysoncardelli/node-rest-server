@@ -12,3 +12,13 @@ if(process.env.NODE_ENV == 'dev'){
 
 
 process.env.urlDB = urlDB;
+//=========Vencimiendo del Token=========
+// 60 seg
+// 60 min
+// 24 horas
+//30 dias
+
+process.env.CADUCIDAD_TOKEN = 60*60*24*30;
+
+//=========SEED=========
+process.env.SEED = 'sds';
