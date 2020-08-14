@@ -10,7 +10,7 @@ app.use(require('./controllers/usuario'));
 
 // respond with "hello world" when a GET request is made to the homepage
 
-mongoose.connect('mongodb://localhost:27017/cafe', (err, res)=>{
+mongoose.connect(process.env.urlDB, {useNewUrlParser: true, useCreateIndex: true}, (err, res)=>{
 
     if(err) throw err;
     console.log('Base de Datos online')
